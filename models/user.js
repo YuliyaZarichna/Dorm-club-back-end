@@ -6,20 +6,37 @@ module.exports = (sequelize, DataTypes) => {
     username: DataTypes.STRING,
     email: DataTypes.STRING,
     password: DataTypes.STRING,
-    role: DataTypes.STRING,
-    University: DataTypes.INTEGER,
-    Country: DataTypes.INTEGER,
-    Hobby: DataTypes.INTEGER
-
+    isVerified: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
+    },
+    role: {
+      type: DataTypes.STRING,
+      defaultValue: 'student'
+    },
+    UniversityId: DataTypes.INTEGER,
+    CountryId: DataTypes.INTEGER,
+    DormId: DataTypes.INTEGER,
+    SpecializationId: DataTypes.INTEGER,
+    /*Hobby: DataTypes.INTEGER */
   }, {});
   User.associate = function (models) {
     // associations can be defined here
+    User.hasMany(models.Post, {
+      as: 'userPosts',
+    })
     User.hasMany(models.Comment, {
       as: 'userComments'
     })
-   /*  User.belongsToMany(models.Hobby, {
-      as: 'userHobbies'
-    }) */
+    User.belongsTo(models.Country, {
+    })
+    User.belongsTo(models.University, {
+    })
+    User.belongsTo(models.Dorm, {
+    })
+    User.belongsTo(models.Specialization, {
+    })
+    /*  User.belongsToMany(models.Hobby, {}) */
   };
   return User;
 };

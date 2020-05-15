@@ -3,10 +3,10 @@ module.exports = (sequelize, DataTypes) => {
   const Country = sequelize.define('Country', {
     name: DataTypes.STRING
   }, {});
-  Country.associate = function(models) {
+
+  Country.associate = function (models) {
     // associations can be defined here
-    Country.hasMany(models.User,{
-      as: 'resident'
+    Country.hasMany(models.User, {
     })
   };
   return Country;

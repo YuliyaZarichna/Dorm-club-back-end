@@ -1,6 +1,8 @@
 const Country = require('../models').Country;
 
 module.exports = {
+
+    /** get all countries */
     getAllCountries(req, res) {
         return Country
             .findAll({

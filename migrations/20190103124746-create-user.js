@@ -30,24 +30,41 @@ module.exports = {
       },
       role: {
         type: Sequelize.STRING,
-        //allowNull: false,
-        isTutor: false
+        defaultValue: 'student'
       },
-      University: {
+      isVerified: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false
+      },
+      UniversityId: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
         references: {
-          model: 'Universities',
+          model: 'universities',
           key: 'id',
         }
       },
-      Country: {
+      CountryId: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
         references: {
-          model: 'Countries',
+          model: 'countries',
           key: 'id',
         }
       },
-      Hobby: {
+      DormId: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
         references: {
-          model: 'Hobbies',
+          model: 'dorms',
+          key: 'id',
+        }
+      },
+      SpecializationId: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'specializations',
           key: 'id',
         }
       },
